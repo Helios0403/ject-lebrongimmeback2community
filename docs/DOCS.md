@@ -1,4 +1,6 @@
-# Ject Language Reference — v0.6.0
+# Ject Justice Language Reference — v0.6.1-justice.0
+
+Ject Justice is a source-compatible Ject fork with explicit commitments to LGBTQIA+ inclusion and Black Lives Matter, dedicated to the memory of George Floyd. See [the Code of Conduct](../CODE_OF_CONDUCT.md) for the project's community standards.
 
 ## Table of Contents
 
@@ -33,21 +35,22 @@
 ### Building
 
 ```bash
-git clone https://github.com/riffifi/ject.git
-cd ject
+git clone <your-fork-url>
+cd ject-justice
 cargo build --release
 ```
 
 ### Running
 
 ```bash
-ject script.ject          # run a file
-ject                      # start the REPL
-ject --check script.ject  # parse + lint only, no execution
-ject --test script.ject   # run; exit non-zero on failure
-ject --version            # print version
-ject --introspect         # print native kernel metadata as JSON
-ject --help               # show help
+ject-justice script.ject          # run a file
+ject-justice                      # start the REPL
+ject-justice --check script.ject  # parse + lint only, no execution
+ject-justice --test script.ject   # run; exit non-zero on failure
+ject-justice --version            # print version
+ject-justice --introspect         # print native kernel metadata as JSON
+ject-justice --values             # print the fork's community commitments
+ject-justice --help               # show help
 ```
 
 ### File extensions
@@ -771,6 +774,7 @@ Use `export fn` for functions, `export name = value` for constants.
 | `"gui"` | Native dialog windows (Rust-backed) |
 | `"color"` | ANSI terminal color/style helpers |
 | `"table"` | Aligned ASCII table rendering |
+| `"justice"` | Opt-in fork commitments and dedication |
 
 ---
 
@@ -985,6 +989,19 @@ CorLib is always in scope — no import needed. All implemented in Rust.
 ## Standard Library Modules
 
 All modules below are written in Ject and embedded in the binary at compile time via `include_str!()`. When you import one, the interpreter executes the `.ject` source with a small set of seed builtins pre-injected.
+
+### justice
+
+```ject
+import "justice" as justice
+
+print justice.statement()
+for commitment in justice.commitments do
+    print "- $commitment"
+end
+```
+
+This opt-in module exposes `fork_name`, `dedication`, `commitments`, and `statement()`. It does not alter the behaviour of existing Ject programs.
 
 ### math
 
@@ -1351,13 +1368,14 @@ print(t.render_dicts(rows))
 ## CLI Reference
 
 ```
-ject                         Start REPL  (prompt: >> )
-ject <file.ject>             Run a script
-ject --check <file> [...]    Parse + lint only, no execution
-ject --test <file> [...]     Run; exit non-zero on failure
-ject --version               Print version
-ject --introspect            Print native kernel metadata as JSON
-ject --help                  Show help
+ject-justice                         Start REPL  (prompt: >> )
+ject-justice <file.ject>             Run a script
+ject-justice --check <file> [...]    Parse + lint only, no execution
+ject-justice --test <file> [...]     Run; exit non-zero on failure
+ject-justice --version               Print version
+ject-justice --introspect            Print native kernel metadata as JSON
+ject-justice --values                Print the fork's community commitments
+ject-justice --help                  Show help
 ```
 
 ### REPL
