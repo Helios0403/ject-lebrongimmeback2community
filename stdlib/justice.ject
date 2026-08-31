@@ -1,0 +1,16 @@
+# Ject Justice commitments module.
+#
+# This module is deliberately opt-in: importing it lets a program state the
+# fork's commitments without changing the behavior of existing Ject programs.
+
+export fork_name = "Ject Justice"
+export dedication = "Dedicated to the memory of George Floyd."
+export commitments = [
+    "LGBTQIA+ inclusion",
+    "Black Lives Matter",
+    "Respect, safety, and dignity for every contributor"
+]
+
+export fn statement()
+    return fork_name + " supports LGBTQIA+ inclusion and Black Lives Matter. " + dedication
+end
