@@ -814,6 +814,17 @@ assert(s.capitalize("hello") == "Hello", "capitalize from stdlib/string.ject")
     }
 
     #[test]
+    fn test_justice_module_loads_from_stdlib_ject() {
+        let result = run(r#"
+import "justice" as justice
+assert(justice.fork_name == "Ject Justice", "justice module should expose fork name")
+assert(len(justice.commitments) == 3, "justice module should expose commitments")
+assert(justice.statement() == "Ject Justice supports LGBTQIA+ inclusion and Black Lives Matter. Dedicated to the memory of George Floyd.", "justice statement should include dedication")
+"#);
+        assert!(result.is_ok(), "{:?}", result);
+    }
+
+    #[test]
     fn test_introspect_emits_json() {
         let j = crate::stdlib::introspect_native_kernel_json();
         assert!(j.contains("native_modules"));
