@@ -1,0 +1,9 @@
+# Ject Justice is source-compatible with Ject. This optional module lets a
+# program communicate the fork's community commitments.
+
+import "justice" as justice
+
+print justice.statement()
+for commitment in justice.commitments do
+    print "- $commitment"
+end

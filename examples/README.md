@@ -1,4 +1,4 @@
-# Ject Examples
+# Ject Justice Examples
 
 Progressive examples from basic to advanced.
 
@@ -25,10 +25,10 @@ Progressive examples from basic to advanced.
 
 - `14_calculator.ject` - Interactive calculator with error handling
 - `15_todo_manager.ject` - Todo list manager application
+- `17_justice.ject` - Using the Ject Justice commitments module
 
 ## Running Examples
 
 ```bash
-./target/release/ject examples/01_hello.ject
+./target/release/ject-justice examples/01_hello.ject
 ```
-
