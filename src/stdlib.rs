@@ -436,6 +436,7 @@ pub fn embedded_stdlib_module_source(name: &str) -> Option<&'static str> {
         "numpy" => Some(include_str!("../stdlib/numpy.ject")),
         "color" => Some(include_str!("../stdlib/color.ject")),
         "table" => Some(include_str!("../stdlib/table.ject")),
+        "justice" => Some(include_str!("../stdlib/justice.ject")),
         _ => None,
     }
 }

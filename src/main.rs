@@ -39,7 +39,10 @@ fn main() {
             print_help();
         }
         "--version" | "-V" => {
-            println!("ject {}", env!("CARGO_PKG_VERSION"));
+            println!("Ject Justice {}", env!("CARGO_PKG_VERSION"));
+        }
+        "--values" => {
+            print_values();
         }
         "--introspect" => {
             println!("{}", stdlib::introspect_native_kernel_json());
@@ -57,7 +60,7 @@ fn main() {
         "--test" => {
             let files: Vec<&String> = args.iter().skip(1).collect();
             if files.is_empty() {
-                eprintln!("Usage: ject --test <file.ject> [file2.ject ...]");
+                eprintln!("Usage: ject-justice --test <file.ject> [file2.ject ...]");
                 std::process::exit(2);
             }
             for path in files {
@@ -69,7 +72,7 @@ fn main() {
             std::process::exit(2);
         }
         _ => {
-            // Legacy: `ject script.ject`
+            // Script execution: `ject-justice script.ject`
             run_file(&args[0]);
         }
     }
@@ -78,15 +81,25 @@ fn main() {
 fn print_help() {
     println!(
         "\
-Ject language interpreter
+Ject Justice language interpreter
 
 USAGE:
-    ject                      Start REPL
-    ject <file.ject>          Run a script
-    ject --check <file> [...] Parse + lint only (no execution)
-    ject --test <file> [...]  Run script(s); exit non-zero on failure
-    ject --introspect         Print native kernel metadata (JSON)
-    ject --help               Show this message"
+    ject-justice                      Start REPL
+    ject-justice <file.ject>          Run a script
+    ject-justice --check <file> [...] Parse + lint only (no execution)
+    ject-justice --test <file> [...]  Run script(s); exit non-zero on failure
+    ject-justice --introspect         Print native kernel metadata (JSON)
+    ject-justice --values             Print the fork's community commitments
+    ject-justice --help               Show this message"
+    );
+}
+
+fn print_values() {
+    println!(
+        "Ject Justice is an inclusive Ject fork.\n\
+         It welcomes LGBTQIA+ people and affirms that Black lives matter.\n\
+         This fork is dedicated to the memory of George Floyd.\n\
+         Read CODE_OF_CONDUCT.md for the community commitments."
     );
 }
 
@@ -245,7 +258,8 @@ fn input_seems_incomplete(source: &str) -> bool {
 }
 
 fn run_repl() {
-    println!("Ject REPL - version {}", env!("CARGO_PKG_VERSION"));
+    println!("Ject Justice REPL - version {}", env!("CARGO_PKG_VERSION"));
+    println!("An inclusive Ject fork, dedicated to the memory of George Floyd.");
     println!("Use arrow keys to access history");
     println!("Ctrl+C cancels the current line, or interrupts a running script; Ctrl+D exits");
     println!("'exit' to, well, exit\n");
@@ -255,7 +269,7 @@ fn run_repl() {
     let mut rl = DefaultEditor::new().expect("Failed to create readline editor");
 
     // Try to load history from file
-    let _ = rl.load_history(".ject_history");
+    let _ = rl.load_history(".ject_justice_history");
 
     // Shared with a Ctrl+C handler below: lets a running script (e.g. an infinite
     // `while true do ... end`) be interrupted cleanly instead of only being able to
@@ -327,7 +341,7 @@ fn run_repl() {
     }
 
     // Save history to file
-    let _ = rl.save_history(".ject_history");
+    let _ = rl.save_history(".ject_justice_history");
 }
 
 fn execute_source(
