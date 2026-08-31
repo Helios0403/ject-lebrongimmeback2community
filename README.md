@@ -1,6 +1,10 @@
-# Ject
+# Ject Justice
 
-A scripting language built in Rust. Clean syntax, dynamic typing, first-class functions, and a rich standard library — no imports needed for most things.
+Ject Justice is a community-focused, source-compatible fork of [Ject](https://github.com/riffifi/ject), built in Rust. It pairs Ject's clean syntax, dynamic typing, first-class functions, and rich standard library with an explicit commitment to LGBTQIA+ inclusion and Black Lives Matter.
+
+This fork is dedicated to the memory of George Floyd. It is a programming tool, not a substitute for the continuing work of affected communities and racial-justice organizers.
+
+See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for the community commitments and use `ject-justice --values` to print them in the terminal.
 
 ```ject
 fn greet(name, greeting = "Hello")
@@ -24,33 +28,33 @@ end
 ## Installation
 
 ```bash
-git clone https://github.com/riffifi/ject.git
-cd ject
+git clone <your-fork-url>
+cd ject-justice
 cargo build --release
 ```
 
 Run a file:
 
 ```bash
-./target/release/ject hello.ject
+./target/release/ject-justice hello.ject
 ```
 
 Parse and lint only (does **not** execute code — used by the VS Code extension):
 
 ```bash
-./target/release/ject --check hello.ject
+./target/release/ject-justice --check hello.ject
 ```
 
 Print native-kernel metadata (for tooling; see `NATIVE_KERNEL.md`):
 
 ```bash
-./target/release/ject --introspect
+./target/release/ject-justice --introspect
 ```
 
 Start the REPL (with history):
 
 ```bash
-./target/release/ject
+./target/release/ject-justice
 ```
 
 ---
@@ -289,6 +293,19 @@ let home = env("HOME")
 ```
 
 The `math`, `string`, `array`, `io`, `json`, `color`, `table`, and `gui` modules extend this further. See [DOCS.md](DOCS.md) for the full reference.
+
+### Justice module
+
+The fork ships a small, opt-in `justice` module for projects that want to surface its commitments in their own output:
+
+```ject
+import "justice" as justice
+
+print justice.dedication
+for value in justice.commitments do
+    print "- $value"
+end
+```
 
 ---
 

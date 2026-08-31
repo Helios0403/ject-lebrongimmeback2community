@@ -1,14 +1,13 @@
 [package]
-name = "ject"
-version = "0.6.0"
+name = "ject-justice"
+version = "0.6.1-justice.0"
 edition = "2021"
-description = "A general-purpose scripting language: readable syntax, native numeric arrays, and a native GUI module, all in one binary."
+description = "An inclusive Ject fork affirming LGBTQIA+ inclusion and Black Lives Matter, with readable syntax, native numeric arrays, and a native GUI module."
 license = "MIT"
-repository = "https://github.com/riffifi/ject"
 readme = "README.md"
-keywords = ["scripting", "language", "interpreter", "repl"]
+keywords = ["scripting", "language", "interpreter", "repl", "inclusive", "black-lives-matter"]
 categories = ["command-line-utilities", "compilers"]
-authors = ["Leo"]
+authors = ["Leo", "Ject Justice contributors"]
 
 [dependencies]
 rustc-hash = "1.1"
